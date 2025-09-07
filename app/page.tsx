@@ -212,9 +212,16 @@ export default function Dashboard() {
               <p className="text-text-secondary">
                 Upgrade to Pro for unlimited access to funding opportunities, masterclasses, and exclusive networking events.
               </p>
-              <Button variant="primary" size="lg">
-                Upgrade to Pro - $10/month
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button variant="primary" size="lg">
+                  Upgrade to Pro - $10/month
+                </Button>
+                <Link href="/payment-test">
+                  <Button variant="outline" size="lg">
+                    Test x402 Payments
+                  </Button>
+                </Link>
+              </div>
             </div>
           </Card>
         )}

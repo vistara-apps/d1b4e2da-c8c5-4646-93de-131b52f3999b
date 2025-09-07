@@ -34,9 +34,10 @@ Your curated launchpad for student entrepreneur success. A community hub for stu
 
 - **Frontend**: Next.js 15 with App Router, TypeScript, Tailwind CSS
 - **Blockchain**: Base (via OnchainKit and MiniKit)
+- **Payments**: x402-axios for USDC payments on Base
 - **Backend**: Supabase for data management
 - **AI**: OpenAI/OpenRouter for founder matching
-- **Wallet**: OnchainKit wallet components
+- **Wallet**: OnchainKit wallet components with wagmi
 
 ## Getting Started
 
@@ -60,6 +61,8 @@ Your curated launchpad for student entrepreneur success. A community hub for stu
    - `NEXT_PUBLIC_ONCHAINKIT_API_KEY`: Your OnchainKit API key
    - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+   - `NEXT_PUBLIC_X402_API_KEY`: Your x402 API key for payments
+   - `NEXT_PUBLIC_PAYMENT_RECIPIENT`: Wallet address to receive payments
    - `OPENAI_API_KEY` or `OPENROUTER_API_KEY`: For AI-powered matching
 
 4. **Run the development server**
@@ -69,6 +72,31 @@ Your curated launchpad for student entrepreneur success. A community hub for stu
 
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
+
+## x402 Payment Integration
+
+NicheConnect integrates x402-axios for seamless USDC payments on Base network:
+
+### Features
+- **Subscription Payments**: Pro ($10 USDC) and Founder's Circle ($25 USDC) tiers
+- **Transaction Confirmation**: Automatic confirmation tracking on Base network
+- **Error Handling**: Comprehensive error handling and retry mechanisms
+- **Payment History**: Track all payment transactions
+- **Wallet Integration**: Uses wagmi useWalletClient for secure wallet connections
+
+### Testing
+Visit `/payment-test` to test the complete payment flow:
+- Wallet connection verification
+- Payment initiation and processing
+- Transaction confirmation on Base
+- Error handling scenarios
+- Payment history retrieval
+
+### Implementation Details
+- Uses USDC contract on Base: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- Integrates with wagmi for wallet management
+- Provides real-time transaction status updates
+- Links to BaseScan for transaction verification
 
 ## Database Setup
 

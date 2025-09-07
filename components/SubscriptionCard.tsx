@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { SubscriptionTier } from '@/lib/types';
 import { Card } from './Card';
 import { Button } from './Button';
+import { PaymentModal } from './PaymentModal';
 import { formatCurrency } from '@/lib/utils';
 import { Check, Star } from 'lucide-react';
 
@@ -15,6 +17,23 @@ interface SubscriptionCardProps {
 export function SubscriptionCard({ tier, currentTier, onUpgrade }: SubscriptionCardProps) {
   const isCurrentTier = currentTier === tier.id;
   const isPopular = tier.id === 'pro';
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  const handleUpgrade = () => {
+    if (tier.price === 0) {
+      // Free tier - handle directly
+      onUpgrade?.(tier.id);
+    } else {
+      // Paid tier - show payment modal
+      setShowPaymentModal(true);
+    }
+  };
+
+  const handlePaymentSuccess = (transactionHash: string) => {
+    console.log('Payment successful:', transactionHash);
+    setShowPaymentModal(false);
+    onUpgrade?.(tier.id);
+  };
 
   return (
     <Card 
@@ -87,13 +106,23 @@ export function SubscriptionCard({ tier, currentTier, onUpgrade }: SubscriptionC
             <Button
               variant={isPopular ? 'primary' : 'outline'}
               className="w-full"
-              onClick={() => onUpgrade?.(tier.id)}
+              onClick={handleUpgrade}
             >
               {tier.price === 0 ? 'Get Started' : 'Upgrade'}
             </Button>
           )}
         </div>
       </div>
+
+      {/* Payment Modal */}
+      {showPaymentModal && tier.id !== 'free' && (
+        <PaymentModal
+          isOpen={showPaymentModal}
+          onClose={() => setShowPaymentModal(false)}
+          subscriptionTier={tier.id as 'pro' | 'founders-circle'}
+          onSuccess={handlePaymentSuccess}
+        />
+      )}
     </Card>
   );
 }
