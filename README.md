@@ -1,6 +1,8 @@
-# NicheConnect - Student Entrepreneur Hub
+# NicheConnect 🚀
 
-Your curated launchpad for student entrepreneur success. A community hub for student entrepreneurs to discover funding, enhance skills, and connect with peers.
+**Your curated launchpad for student entrepreneur success**
+
+A comprehensive community hub for student entrepreneurs to discover funding opportunities, enhance skills through masterclasses, connect with co-founders, and get structured feedback from peers.
 
 ## Features
 
