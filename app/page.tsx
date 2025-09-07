@@ -91,59 +91,100 @@ export default function Dashboard() {
     <AppShell>
       <div className="space-y-8">
         {/* Welcome Section */}
-        <div className="text-center space-y-4">
-          <h1 className="text-5xl font-bold text-text-primary">
-            Welcome to <span className="text-primary">NicheConnect</span>
-          </h1>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            Your curated launchpad for student entrepreneur success. Discover funding, enhance skills, and connect with peers.
-          </p>
+        <div className="text-center space-y-6 py-8">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-text-primary leading-tight">
+              Welcome to{' '}
+              <span className="text-gradient-primary">NicheConnect</span>
+            </h1>
+            <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+              Your curated launchpad for student entrepreneur success. Discover funding, enhance skills, and connect with peers.
+            </p>
+          </div>
+          
+          {/* Quick CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button 
+              variant="primary" 
+              size="lg"
+              className="gradient-primary shadow-lg hover:shadow-xl"
+            >
+              Get Started
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+            <Button variant="outline" size="lg">
+              Watch Demo
+            </Button>
+          </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat) => (
-            <Card key={stat.label} className="text-center">
-              <div className="space-y-2">
-                <stat.icon className={`h-8 w-8 mx-auto ${stat.color}`} />
-                <div className="text-2xl font-bold text-text-primary">{stat.value}</div>
-                <div className="text-sm text-text-secondary">{stat.label}</div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {stats.map((stat, index) => (
+            <Card 
+              key={stat.label} 
+              className="text-center hover:scale-105 transition-transform duration-300"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="space-y-3">
+                <div className="relative">
+                  <div className={`h-12 w-12 mx-auto rounded-full bg-gradient-to-br ${
+                    stat.color.includes('blue') ? 'from-primary/20 to-primary/10' :
+                    stat.color.includes('green') ? 'from-green-500/20 to-green-500/10' :
+                    stat.color.includes('purple') ? 'from-accent/20 to-accent/10' :
+                    'from-yellow-500/20 to-yellow-500/10'
+                  } flex items-center justify-center`}>
+                    <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                  </div>
+                </div>
+                <div className="text-3xl font-bold text-text-primary">{stat.value}</div>
+                <div className="text-sm font-medium text-text-secondary">{stat.label}</div>
               </div>
             </Card>
           ))}
         </div>
 
         {/* Quick Actions */}
-        <Card>
-          <div className="space-y-4">
+        <Card className="bg-gradient-to-br from-surface to-muted/30">
+          <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-text-primary flex items-center">
-              <Zap className="h-6 w-6 mr-2 text-accent" />
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-accent to-accent-600 flex items-center justify-center mr-3">
+                <Zap className="h-5 w-5 text-white" />
+              </div>
               Quick Actions
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link href="/opportunities">
-                <Button variant="outline" className="w-full h-20 flex-col space-y-2">
-                  <Target className="h-6 w-6" />
-                  <span>Find Funding</span>
-                </Button>
+              <Link href="/opportunities" className="group">
+                <div className="h-24 p-4 rounded-lg border border-border bg-surface hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center space-y-2 group-hover:scale-105">
+                  <div className="h-8 w-8 rounded-lg bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors duration-300">
+                    <Target className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-text-primary">Find Funding</span>
+                </div>
               </Link>
-              <Link href="/masterclasses">
-                <Button variant="outline" className="w-full h-20 flex-col space-y-2">
-                  <BookOpen className="h-6 w-6" />
-                  <span>Learn Skills</span>
-                </Button>
+              <Link href="/masterclasses" className="group">
+                <div className="h-24 p-4 rounded-lg border border-border bg-surface hover:bg-accent/5 hover:border-accent/30 transition-all duration-300 flex flex-col items-center justify-center space-y-2 group-hover:scale-105">
+                  <div className="h-8 w-8 rounded-lg bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center transition-colors duration-300">
+                    <BookOpen className="h-5 w-5 text-accent" />
+                  </div>
+                  <span className="text-sm font-medium text-text-primary">Learn Skills</span>
+                </div>
               </Link>
-              <Link href="/connections">
-                <Button variant="outline" className="w-full h-20 flex-col space-y-2">
-                  <Users className="h-6 w-6" />
-                  <span>Find Co-founders</span>
-                </Button>
+              <Link href="/connections" className="group">
+                <div className="h-24 p-4 rounded-lg border border-border bg-surface hover:bg-secondary/5 hover:border-secondary/30 transition-all duration-300 flex flex-col items-center justify-center space-y-2 group-hover:scale-105">
+                  <div className="h-8 w-8 rounded-lg bg-secondary/10 group-hover:bg-secondary/20 flex items-center justify-center transition-colors duration-300">
+                    <Users className="h-5 w-5 text-secondary" />
+                  </div>
+                  <span className="text-sm font-medium text-text-primary">Find Co-founders</span>
+                </div>
               </Link>
-              <Link href="/feedback">
-                <Button variant="outline" className="w-full h-20 flex-col space-y-2">
-                  <MessageCircle className="h-6 w-6" />
-                  <span>Get Feedback</span>
-                </Button>
+              <Link href="/feedback" className="group">
+                <div className="h-24 p-4 rounded-lg border border-border bg-surface hover:bg-green-500/5 hover:border-green-500/30 transition-all duration-300 flex flex-col items-center justify-center space-y-2 group-hover:scale-105">
+                  <div className="h-8 w-8 rounded-lg bg-green-500/10 group-hover:bg-green-500/20 flex items-center justify-center transition-colors duration-300">
+                    <MessageCircle className="h-5 w-5 text-green-600" />
+                  </div>
+                  <span className="text-sm font-medium text-text-primary">Get Feedback</span>
+                </div>
               </Link>
             </div>
           </div>
@@ -204,17 +245,42 @@ export default function Dashboard() {
 
         {/* Upgrade CTA */}
         {userTier === 'free' && (
-          <Card variant="featured">
-            <div className="text-center space-y-4">
-              <h3 className="text-xl font-semibold text-text-primary">
-                Ready to unlock your full potential?
-              </h3>
-              <p className="text-text-secondary">
-                Upgrade to Pro for unlimited access to funding opportunities, masterclasses, and exclusive networking events.
-              </p>
-              <Button variant="primary" size="lg">
-                Upgrade to Pro - $10/month
-              </Button>
+          <Card variant="featured" className="relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10" />
+            <div className="relative text-center space-y-6 py-4">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-bold text-text-primary">
+                  Ready to unlock your full potential?
+                </h3>
+                <p className="text-text-secondary max-w-2xl mx-auto">
+                  Upgrade to Pro for unlimited access to funding opportunities, masterclasses, and exclusive networking events.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button 
+                  variant="primary" 
+                  size="lg"
+                  className="gradient-primary shadow-lg hover:shadow-xl"
+                >
+                  Upgrade to Pro - $10/month
+                  <Star className="h-5 w-5" />
+                </Button>
+                <Button variant="outline" size="lg">
+                  Learn More
+                </Button>
+              </div>
+              
+              <div className="flex justify-center items-center space-x-6 text-sm text-text-muted">
+                <div className="flex items-center space-x-2">
+                  <div className="h-2 w-2 bg-green-500 rounded-full" />
+                  <span>Cancel anytime</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="h-2 w-2 bg-green-500 rounded-full" />
+                  <span>14-day free trial</span>
+                </div>
+              </div>
             </div>
           </Card>
         )}

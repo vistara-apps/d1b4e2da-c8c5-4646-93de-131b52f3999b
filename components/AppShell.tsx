@@ -41,36 +41,39 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="min-h-screen bg-bg">
       {/* Mobile header */}
-      <div className="lg:hidden bg-surface border-b border-border px-4 py-3 flex items-center justify-between">
+      <div className="lg:hidden bg-surface/95 backdrop-blur-sm border-b border-border px-4 py-3 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-md hover:bg-gray-100 transition-colors duration-200"
+            className="p-2 rounded-lg hover:bg-muted active:bg-muted/80 transition-all duration-200"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6 text-text-primary" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6 text-text-primary" />
             )}
           </button>
-          <h1 className="text-xl font-bold text-primary">NicheConnect</h1>
+          <h1 className="text-xl font-bold text-gradient-primary">NicheConnect</h1>
         </div>
         
         <Wallet>
           <ConnectWallet>
-            <Avatar className="h-8 w-8" />
+            <div className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted transition-colors duration-200">
+              <Avatar className="h-8 w-8" />
+            </div>
           </ConnectWallet>
         </Wallet>
       </div>
 
       {/* Mobile menu overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50">
-          <div className="fixed inset-y-0 left-0 w-64 bg-surface shadow-xl">
-            <div className="p-4 border-b border-border">
-              <h2 className="text-lg font-semibold text-primary">NicheConnect</h2>
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
+          <div className="fixed inset-y-0 left-0 w-72 bg-surface/95 backdrop-blur-md shadow-2xl border-r border-border">
+            <div className="p-6 border-b border-border">
+              <h2 className="text-xl font-bold text-gradient-primary">NicheConnect</h2>
             </div>
-            <nav className="p-4 space-y-2">
+            <nav className="p-4 space-y-1">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -78,10 +81,10 @@ export function AppShell({ children }: AppShellProps) {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                       isActive
-                        ? 'bg-primary text-white'
-                        : 'text-text-secondary hover:bg-gray-100'
+                        ? 'bg-gradient-to-r from-primary to-primary-600 text-white shadow-md'
+                        : 'text-text-secondary hover:bg-muted hover:text-text-primary'
                     }`}
                   >
                     <item.icon className="h-5 w-5" />
@@ -90,6 +93,20 @@ export function AppShell({ children }: AppShellProps) {
                 );
               })}
             </nav>
+            
+            {/* Mobile menu footer */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-surface/80">
+              <Wallet>
+                <ConnectWallet>
+                  <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted transition-colors duration-200">
+                    <Avatar className="h-10 w-10" />
+                    <div className="flex-1 min-w-0">
+                      <Name className="text-sm font-medium text-text-primary" />
+                    </div>
+                  </div>
+                </ConnectWallet>
+              </Wallet>
+            </div>
           </div>
         </div>
       )}
