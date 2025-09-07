@@ -1,0 +1,14 @@
+{
+  "name": "NicheConnect",
+  "description": "NicheConnect is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://d1b4e2da-c8c5-4646-93de-131b52f3999b.vercel.app",
+  "properties": {
+    "app": {
+      "name": "NicheConnect",
+      "description": "NicheConnect is a Base Mini App built with Zara.",
+      "url": "https://d1b4e2da-c8c5-4646-93de-131b52f3999b.vercel.app",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}

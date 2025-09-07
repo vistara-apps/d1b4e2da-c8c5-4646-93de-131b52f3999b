@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "NicheConnect",
+    "subtitle": "Built with Zara",
+    "description": "NicheConnect is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://d1b4e2dac8c5464693de131b52f3999b-kyek.vercel.app",
+    "splashImageUrl": "https://d1b4e2dac8c5464693de131b52f3999b-kyek.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://d1b4e2dac8c5464693de131b52f3999b-kyek.vercel.app/image.png",
+    "tagline": "NicheConnect",
+    "screenshotUrls": [
+      "https://d1b4e2dac8c5464693de131b52f3999b-kyek.vercel.app/screenshot.png",
+      "https://d1b4e2dac8c5464693de131b52f3999b-kyek.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://d1b4e2dac8c5464693de131b52f3999b-kyek.vercel.app/api/webhook"
+  }
+}
